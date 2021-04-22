@@ -17,6 +17,8 @@ An Note Manager which will help you to note down your ideas quickly  with no wo
 
 - **Multiple Layouts** : If you work on multiple docs quite often. We provide option to change layout as well.
 
+- **Fullscreen** : A fulscreen editor as no one wants to get distracted.
+
 
 Check the appliction right [here](https://amber-note-04221316.s3.ap-south-1.amazonaws.com/index.html).
 

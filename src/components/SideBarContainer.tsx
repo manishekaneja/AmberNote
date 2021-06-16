@@ -1,25 +1,23 @@
-import { nanoid } from "nanoid";
-import React, { useContext, useState } from "react";
-import { NotesContext } from "../context/NotesContext";
-import { SelectedNotesUpdaterContext } from "../context/SelectedNotesUpdaterContext";
-import CloseIcon from "../icons/CloseIcon";
-import FileIcon from "../icons/FileIcon";
-import PinnedIcon from "../icons/PinnedIcon";
-import TrashIcon from "../icons/TrashIcon";
-import NoteCard from "./NoteCard";
-import Title from "./Title";
-import TitleInput from "./TitleInput";
-
-function SidebarConatiner() {
+import {nanoid} from 'nanoid';
+import React, {FC, useContext, useState} from 'react';
+import {NotesContext} from '../context/NotesContext';
+import {SelectedNotesUpdaterContext} from '../context/SelectedNotesUpdaterContext';
+import CloseIcon from '../icons/CloseIcon';
+import FileIcon from '../icons/FileIcon';
+import PinnedIcon from '../icons/PinnedIcon';
+import TrashIcon from '../icons/TrashIcon';
+import NoteCard from './NoteCard';
+import Title from './Title';
+import TitleInput from './TitleInput';
+const SidebarConatiner: FC<{
+  createState: boolean;
+  onCreateStateChange: () => void;
+  deactivateCreateNote: () => void;
+}> = ({createState, onCreateStateChange, deactivateCreateNote}) => {
   const notesList = useContext(NotesContext);
   const [isEditable, setIsEditable] = useState<boolean>(false);
-
-  const {
-    addNewNote,
-    removeNote,
-    toggleNotePinnedState,
-    selectNoteForEditor,
-  } = useContext(SelectedNotesUpdaterContext);
+  const {addNewNote, removeNote, toggleNotePinnedState, selectNoteForEditor} =
+    useContext(SelectedNotesUpdaterContext);
   return (
     <>
       <Title>
@@ -28,24 +26,22 @@ function SidebarConatiner() {
         </h1>
         <button
           className="focus:outline-none flex-grow-0 dark:hover:bg-gray-700 hover:bg-blue-500 p-3"
-          onClick={() => {
-            setIsEditable((pf) => !pf);
-          }}
+          onClick={onCreateStateChange}
         >
-          {isEditable ? <CloseIcon /> : <FileIcon />}
+          {createState ? <CloseIcon /> : <FileIcon />}
         </button>
       </Title>
       <div className="flex flex-col w-full">
         <TitleInput
           fallback={null}
-          isEditable={isEditable}
+          isEditable={createState}
           defaultEditableInput=""
           onSubmit={(title) => {
             addNewNote({
               id: nanoid(),
               title: title,
             });
-            setIsEditable(false);
+            deactivateCreateNote();
           }}
         />
       </div>
@@ -91,6 +87,6 @@ function SidebarConatiner() {
       </div>
     </>
   );
-}
+};
 
 export default SidebarConatiner;

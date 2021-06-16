@@ -1,13 +1,13 @@
-import React, { FC, Fragment, useContext, useState } from "react";
-import ReactQuill from "react-quill";
-import { SelectedNotesUpdaterContext } from "../context/SelectedNotesUpdaterContext";
-import debounce from "../helper/debounce";
-import CloseIcon from "../icons/CloseIcon";
-import EditIcon from "../icons/EditIcon";
-import Title from "./Title";
-import TitleInput from "./TitleInput";
-const NoteEditor: FC<{ note: Note }> = ({ note }) => {
-  const { updateNoteFromEditor, closeEditor } = useContext(
+import React, {FC, Fragment, useContext, useState} from 'react';
+import ReactQuill from 'react-quill';
+import {SelectedNotesUpdaterContext} from '../context/SelectedNotesUpdaterContext';
+import debounce from '../helper/debounce';
+import CloseIcon from '../icons/CloseIcon';
+import EditIcon from '../icons/EditIcon';
+import Title from './Title';
+import TitleInput from './TitleInput';
+const NoteEditor: FC<{note: Note}> = ({note}) => {
+  const {updateNoteFromEditor, closeEditor} = useContext(
     SelectedNotesUpdaterContext
   );
   const [isEditable, setIsEditable] = useState<boolean>(false);

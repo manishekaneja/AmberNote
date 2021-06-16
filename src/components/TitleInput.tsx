@@ -1,13 +1,13 @@
-import React, { FC, Fragment, useEffect, useRef, useState } from "react";
-import ConfirmIcon from "../icons/ConfirmIcon";
+import React, {FC, Fragment, useEffect, useRef, useState} from 'react';
+import ConfirmIcon from '../icons/ConfirmIcon';
 const TitleInput: FC<{
   defaultEditableInput: string;
   fallback: React.ReactNode;
   isEditable: boolean;
   onSubmit: (title: string) => void;
-}> = ({ defaultEditableInput, fallback, isEditable, onSubmit }) => {
+}> = ({defaultEditableInput, fallback, isEditable, onSubmit}) => {
   const [isError, setIsError] = useState<boolean>(false);
-  const [title, setTitle] = useState<string>("");
+  const [title, setTitle] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -20,10 +20,10 @@ const TitleInput: FC<{
           <div className="flex-1 flex flex-col">
             <input
               ref={inputRef}
-              className="font-bold text-xl w-full flex-1 placeholder-current dark:placeholder-white dark:text-white py-2 px-2 bg-white bg-opacity-20"
+              className="font-bold text-xl w-full flex-1 outline-none placeholder-current dark:placeholder-gray-400 dark:text-white py-2 px-2 bg-white bg-opacity-20"
               value={title}
-              placeholder="Specify Title for Note"
-              onChange={({ target: { value } }) => {
+              placeholder="Note's Title"
+              onChange={({target: {value}}) => {
                 if (value.trim().length <= 0) {
                   setIsError(true);
                 } else {
@@ -48,7 +48,7 @@ const TitleInput: FC<{
                 }
                 return;
               } else {
-                setTitle("");
+                setTitle('');
                 onSubmit(title.trim());
               }
             }}

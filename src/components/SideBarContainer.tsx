@@ -31,7 +31,7 @@ const SidebarConatiner: FC<{
           {createState ? <CloseIcon /> : <FileIcon />}
         </button>
       </Title>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-row w-full text-gray-700">
         <TitleInput
           fallback={null}
           isEditable={createState}

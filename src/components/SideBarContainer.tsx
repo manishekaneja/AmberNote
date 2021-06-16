@@ -1,5 +1,5 @@
 import {nanoid} from 'nanoid';
-import React, {FC, useContext, useState} from 'react';
+import React, {FC, useContext} from 'react';
 import {NotesContext} from '../context/NotesContext';
 import {SelectedNotesUpdaterContext} from '../context/SelectedNotesUpdaterContext';
 import CloseIcon from '../icons/CloseIcon';
@@ -15,7 +15,6 @@ const SidebarConatiner: FC<{
   deactivateCreateNote: () => void;
 }> = ({createState, onCreateStateChange, deactivateCreateNote}) => {
   const notesList = useContext(NotesContext);
-  const [isEditable, setIsEditable] = useState<boolean>(false);
   const {addNewNote, removeNote, toggleNotePinnedState, selectNoteForEditor} =
     useContext(SelectedNotesUpdaterContext);
   return (

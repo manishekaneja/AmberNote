@@ -1,4 +1,4 @@
-import React, {FC, useCallback} from 'react';
+import React, {FC} from 'react';
 import EditIcon from '../icons/EditIcon';
 const EditorContainerDefault: FC<{onClick: () => void}> = ({onClick}) => {
   return (
